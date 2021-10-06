@@ -1,0 +1,31 @@
+@import 'variables';
+
+%card-generic {
+  box-shadow: 0 0 0 transparent;
+  border: 1px solid darken($athens-gray, 10%);
+}
+
+%influence-arrows {
+  .fa-arrow-circle-up {
+    transform: rotate(45deg);
+
+    &.t2s-cc-high {
+      color: darken($las-palmas, 20);
+      font-size: pxtoem(18);
+    }
+
+    &.t2s-cc-medium {
+      color: darken($las-palmas, 10);
+      font-size: pxtoem(16);
+    }
+
+    &.t2s-cc-low {
+      color: $las-palmas;
+    }
+  }
+
+  .fa-arrow-circle-down {
+    color: $red-orange;
+    transform: rotate(-45deg);
+  }
+}

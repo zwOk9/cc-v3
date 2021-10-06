@@ -1,0 +1,13 @@
+@import './utils/_variables';
+
+html *, html :after, html :before {
+  box-sizing: border-box;
+}
+
+input, textarea, keygen, select, button {
+  font-family: $base-font-family;
+}
+
+a {
+  text-decoration: none;
+}

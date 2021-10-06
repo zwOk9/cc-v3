@@ -1,0 +1,27 @@
+{
+  "name": "cc-v3",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "element-plus": "^1.1.0-beta.19",
+    "vue": "^3.2.6",
+    "vue-router": "^4.0.11",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@intlify/vite-plugin-vue-i18n": "^2.4.0",
+    "@vitejs/plugin-vue": "^1.6.1",
+    "@vue/compiler-sfc": "^3.2.6",
+    "sass": "~1.32.12",
+    "unplugin-vue-components": "^0.15.6",
+    "vite": "^2.5.4",
+    "vite-plugin-pages": "^0.18.1",
+    "vite-plugin-pug": "^0.3.0",
+    "vite-plugin-vue-layouts": "^0.5.0",
+    "vite-ssg": "^0.15.2"
+  }
+}

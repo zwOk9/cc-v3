@@ -19,7 +19,7 @@ export default defineConfig({
     },
   },
   define: { 'process.env': {} },
-  plugins: 
+  plugins:
     [vue({
       include: [/\.vue$/, /\.md$/],
     }),
@@ -31,7 +31,7 @@ export default defineConfig({
     Components({
       resolvers: [
         ElementPlusResolver({
-          importStyle: "sass",
+          importStyle: "scss",
         })
       ]
     }),

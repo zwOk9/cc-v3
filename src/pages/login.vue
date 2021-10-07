@@ -5,45 +5,39 @@ div.t2s-cc-login
       div.t2s-cc-login__header
         img.logo-header(src="../static/img/logo.svg", valt="Target2Sell")
       div.t2s-cc-login__wrapper
-        h2 {{$t('Sign in')}}
-        el-alert(show-icon, type="warning", :title="$t(authError)", v-if="authError")
+        h2 {{('Sign in')}}
+        el-alert(show-icon, type="warning", , v-if="authError")
         br
         el-form.t2s-cc-login__form(ref="form", :model="user", :rules="rules", @keyup.enter.native="submitLogin")
           el-form-item(prop="login")
-            el-input#username(:placeholder="$t('login')", type="text", v-model="user.login")
-              template(slot="prepend")
+            el-input#username(:placeholder="'login'", type="text", v-model="user.login")
+              template(#prepend)
                 span.fa.fa-user
-            span.t2s-cc-error-label {{ $t('wrong user') }}
+            span.t2s-cc-error-label {{ 'wrong user' }}
           el-form-item(prop="password")
-            el-input#password(:placeholder="$t('password')", type="password", v-model="user.password")
-              template(slot="prepend")
+            el-input#password(:placeholder="('password')", type="password", v-model="user.password")
+              template(#prepend)
                 span.fa.fa-lock
-            span.t2s-cc-error-label {{ $t('wrong password') }}
+            span.t2s-cc-error-label {{ ('wrong password') }}
           div.t2s-cc-login__form--password-reset
-            el-button(type="text" ref="forgotPassword" @click="showAskResetPassword") {{ $t('forgot password') }}
+            el-button(type="text" ref="forgotPassword" @click="showAskResetPassword") {{ ('forgot password') }}
           el-form-item
-            el-button#submit.t2s-cc-confirm.bold(type="primary", @click="submitLogin") {{ $t('confirm') }}
+            el-button#submit.t2s-cc-confirm.bold(type="primary", @click="submitLogin") {{ ('confirm') }}
       span.t2s-cc-version version&nbsp;
         i {{ version }}
     div.t2s-cc-login-background
-  el-dialog(:title="$t('forgot password')", :visible.sync="askResetPassword", width="40%")
-    ask-reset-password(v-if="askResetPassword" v-on:detroyAskResetPassword="hiddenAskResetPassword")
-  el-dialog(:title="$t('forgot password')", :visible.sync="resetPassword", width="40%" )
-    reset-password(v-if="resetPassword" v-on:hidePwdReset="hidePwdResetWindow")
+  el-dialog(:title="('forgot password')", :visible.sync="askResetPassword", width="40%")
+  el-dialog(:title="('forgot password')", :visible.sync="resetPassword", width="40%" )
 </template>
 
 <script>
 import _ from 'lodash'
-import { mapGetters, mapActions } from 'vuex'
+// import { mapGetters, mapActions } from 'vuex'
 // import AskResetPassword from '@/components/AskResetPassword'
 // import ResetPassword from '@/components/ResetPassword'
 
 export default {
   name: 'login',
-  components: {
-    AskResetPassword,
-    ResetPassword
-  },
   data () {
     return {
       httpConfig: {
@@ -58,10 +52,10 @@ export default {
       },
       rules: {
         login: [
-          {required: true, message: this.$t('required field'), trigger: 'blur'}
+          {required: true, message: ('required field'), trigger: 'blur'}
         ],
         password: [
-          {required: true, message: this.$t('required field'), trigger: 'blur'}
+          {required: true, message: ('required field'), trigger: 'blur'}
         ]
       },
       askResetPassword: false,
@@ -69,7 +63,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['version', 'authError', 'currentCustomer', 'invalidToken', 'userName'])
+    // ...mapGetters(['version', 'authError', 'currentCustomer', 'invalidToken', 'userName'])
   },
   async created () {
     if (!_.isNil(this.$route.query.token)) {
@@ -86,11 +80,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      'login',
-      'setAuthError',
-      'getTokenInfo'
-    ]),
+    // ...mapActions([
+    //   'login',
+    //   'setAuthError',
+    //   'getTokenInfo'
+    // ]),
     showAskResetPassword () {
       this.askResetPassword = true
     },
@@ -127,88 +121,90 @@ export default {
 }
 </script>
 <style lang="scss">
+@use 'sass:math';
  @import "../sass/utils";
 
-// $login-width: (480 / $base-width * 100%);
 
-// .t2s-cc-login {
-//   &__form {
-//     &--password-reset {
-//       text-align: right;
-//     }
-//   }
-//   .el-alert {
-//     text-align: left;
-//   }
+$login-width: math.percentage(math.div(480, ($base-width)));
 
-//   &--main-container {
-//     background-color: $robins-egg-blue;
-//     position: fixed;
-//     top: 0;
-//     bottom: 0;
-//     left: 0;
-//     right: 0;
-//     display: flex;
-//     align-content: stretch;
-//   }
+.t2s-cc-login {
+  &__form {
+    &--password-reset {
+      text-align: right;
+    }
+  }
+  .el-alert {
+    text-align: left;
+  }
 
-//   &--sidebar {
-//     width: $login-width;
-//     background-color: $white;
-//     border: 1px solid $athens-gray;
-//     box-shadow: 0 0 10px rgba(0, 0, 0, .25);
-//     padding: pxtoem(25) pxtoem(40) pxtoem(25) pxtoem(30);
-//     position: relative;
+  &--main-container {
+    background-color: $robins-egg-blue;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-content: stretch;
+  }
 
-//     .t2s-cc-error-label {
-//       margin: 0 pxtoem(32);
-//     }
+  &--sidebar {
+    width: $login-width;
+    background-color: $white;
+    border: 1px solid $athens-gray;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+    padding: pxtoem(25) pxtoem(40) pxtoem(25) pxtoem(30);
+    position: relative;
 
-//     .t2s-cc-version {
-//       position: absolute;
-//       bottom: 25px;
-//       font-size: pxtoem(14);
-//       color: $oslo-gray;
-//     }
-//   }
+    .t2s-cc-error-label {
+      margin: 0 pxtoem(32);
+    }
 
-//   &__header {
-//     height: pxtoem(28);
-//     text-align: left;
+    .t2s-cc-version {
+      position: absolute;
+      bottom: 25px;
+      font-size: pxtoem(14);
+      color: $oslo-gray;
+    }
+  }
 
-//     .logo-header {
-//       height: 100%;
-//     }
-//   }
+  &__header {
+    height: pxtoem(28);
+    text-align: left;
 
-//   &__wrapper {
-//     margin: pxtoem(180) 0 pxtoem(30);
-//     padding: 0 pxtoem(5) pxtoem(15);
-//     text-align: center;
+    .logo-header {
+      height: 100%;
+    }
+  }
 
-//     h2 {
-//       font-size: pxtoem(46);
-//       font-weight: 300;
-//       font-family: $base-font-family;
-//       line-height: 1.5;
-//       position: relative;
+  &__wrapper {
+    margin: pxtoem(180) 0 pxtoem(30);
+    padding: 0 pxtoem(5) pxtoem(15);
+    text-align: center;
 
-//       &:after {
-//         content: "";
-//         width: (55 / 408 * 100%);
-//         border-bottom: 1px dotted $iron;
-//         position: absolute;
-//         bottom: -25px;
-//         left: 50%;
-//         transform: translateX(-50%);
-//       }
-//     }
+    h2 {
+      font-size: pxtoem(46);
+      font-weight: 300;
+      font-family: $base-font-family;
+      line-height: 1.5;
+      position: relative;
 
-//   }
-//   &-background {
-//     background: url('/static/img/bg.jpg') no-repeat left top;
-//     width: (100 - $login-width);
-//   }
-// }
+      &:after {
+        content: "";
+        width: math.percentage(math.div(55, (408)));
+        border-bottom: 1px dotted $iron;
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+  }
+  &-background {
+    background: url('../static/img/bg.jpg') no-repeat left top;
+    width: (100 - $login-width);
+  }
+}
 
 </style>

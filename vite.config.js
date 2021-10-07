@@ -19,7 +19,7 @@ export default defineConfig({
     },
   },
   define: { 'process.env': {} },
-  plugins: 
+  plugins:
     [vue({
       include: [/\.vue$/, /\.md$/],
     }),
@@ -31,14 +31,13 @@ export default defineConfig({
     Components({
       resolvers: [
         ElementPlusResolver({
-          importStyle: "sass",
+          importStyle: "scss",
         })
       ]
     }),
     VueI18n({
       runtimeOnly: true,
-      compositionOnly: true,
-      include: [path.resolve(__dirname, 'i18n/**')]
+      include: [path.resolve(__dirname, 'src/i18n/locals/**')]
     })
     ]
 })

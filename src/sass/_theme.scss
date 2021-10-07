@@ -4,9 +4,9 @@
 $--color-primary: $robins-egg-blue;
 
 /* icon font path, required */
-$--font-path: '~element-ui/lib/theme-chalk/fonts';
+$--font-path: 'element-plus/lib/theme-chalk/fonts';
 
-@import "~element-ui/packages/theme-chalk/src/index";
+@import "element-plus/packages/theme-chalk/src/index";
 
 // Element UI Custom theme (Material)
 
@@ -511,7 +511,7 @@ img {
     width: 100%;
     height: 100%;
     top: 0;
-    background: url(/static/img/missing-image.png) no-repeat center center $white;
+    background: url(../static/img/missing-image.png) no-repeat center center $white;
     background-size: cover;
   }
 }

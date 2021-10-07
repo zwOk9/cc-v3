@@ -37,8 +37,7 @@ export default defineConfig({
     }),
     VueI18n({
       runtimeOnly: true,
-      compositionOnly: true,
-      include: [path.resolve(__dirname, 'i18n/**')]
+      include: [path.resolve(__dirname, 'src/i18n/locals/**')]
     })
     ]
 })

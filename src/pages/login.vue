@@ -5,7 +5,7 @@ div.t2s-cc-login
       div.t2s-cc-login__header
         img.logo-header(src="../static/img/logo.svg", valt="Target2Sell")
       div.t2s-cc-login__wrapper
-        h2 {{('Sign in')}}
+        h2 {{ $t('Sign in') }}
         el-alert(show-icon, type="warning", , v-if="authError")
         br
         el-form.t2s-cc-login__form(ref="form", :model="user", :rules="rules", @keyup.enter.native="submitLogin")
@@ -31,6 +31,7 @@ div.t2s-cc-login
 </template>
 
 <script>
+
 import _ from 'lodash'
 // import { mapGetters, mapActions } from 'vuex'
 // import AskResetPassword from '@/components/AskResetPassword'

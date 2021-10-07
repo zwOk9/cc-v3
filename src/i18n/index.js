@@ -4,7 +4,6 @@ import locales from './locales'
 import moment from 'moment'
 import 'moment/locale/fr'
 import VueI18n from 'vue-i18n'
-
 Vue.use(VueI18n)
 
 if (_.isNull(localStorage.getItem('TS2_LANG'))) {

@@ -1,9 +1,7 @@
-import enLocale from 'element-ui/lib/locale/lang/en'
-import enHelp from './help/en'
+import enLocale from 'element-plus/lib/locale/lang/en'
 
 export default {
   ...enLocale,
-  ...enHelp,
   // GLOBALS
   'welcome': 'Welcome {user}',
   'logout': 'Logout',
